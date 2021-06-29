@@ -1,41 +1,6 @@
 <?php
   include_once "./Views/parte_superior.php"
 ?>
-<!-- EL MERO INDEX -->
-
-<?php
-    include_once 'bd/conexion.php';
-    $objeto = new Conexion();
-    $conexion = $objeto->Conectar();
-
-    $consulta = "SELECT al.IDCodigoAlmacen, 
-    al.Codigo1, 
-    al.Codigo2, 
-    al.NombreArticulo, 
-    al.Modelopresentacion, 
-    al.precioVenta, 
-    al.PrecioCompra, 
-    uno.Stock, 
-    al.Marca, 
-    al.Notas,
-    uno.Stock as almacenuno,
-    dos.Stock as almacendos,
-    tres.Stock as almacentres,
-    cuatro.Stock as almacencuatro
-FROM almacen as al 
-INNER JOIN almacenuno as uno on uno.IDCodigoAlmacenPK = al.IDCodigoAlmacen 
-INNER JOIN almacendos as dos on dos.IDCodigoAlmacenPK = al.IDCodigoAlmacen
-INNER JOIN almacentres as tres on tres.IDCodigoAlmacenPK = al.IDCodigoAlmacen
-INNER JOIN almacencuatro as cuatro on cuatro.IDCodigoAlmacenPK = al.IDCodigoAlmacen
-WHERE al.IsVisible = 1
-";
-
-    //$consulta = "SELECT IDCodigoAlmacen, Codigo1, Codigo2, NombreArticulo, Modelopresentacion, precioVenta, PrecioCompra, Stock, Marca, Notas FROM almacen as al where IsVisible = 1";
-    $resultado = $conexion->prepare($consulta);
-    $resultado->execute();
-    $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -48,7 +13,7 @@ WHERE al.IsVisible = 1
         </div><!-- /.col -->
         <div class="col-sm-6">
            <ol class="breadcrumb float-sm-right">
-             <li class="breadcrumb-item"><a href="#">Inventario</a></li>
+             <li class="breadcrumb-item"><a href="#">Tablero</a></li>
              <li class="breadcrumb-item active">creditos</li>
            </ol>
         </div><!-- /.col -->
@@ -61,35 +26,20 @@ WHERE al.IsVisible = 1
         </div>
         <div class="card-body">
             <div class="table-responsive"  style="margin-end:10px">
-                            <table id="tablaproductos" class="ui celled table" style="width:100%">
-                                <thead class="text-center">
-                                    <tr>
-                                        <th hidden>id</th>
-                                        <th>Nombre</th>
-                                        <th>N° De Cedula</th>
-                                        <th>N° De Telefono</th>
-                                        <th>Deuda</th>
-                                        <th>Deuda Pendiente</th>
-                                        <th>Fecha de pago</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach ($data as $dat) {
-                                    ?>
-                                        <tr>
-                                            <td hidden><?php echo $dat['IDCodigoAlmacen'] ?></td>                                            
-                                            <td><?php echo $dat['NombreArticulo'] ?></td>
-                                            <td><?php echo $dat['Marca'] ?></td>
-                                            <td><?php echo $dat['Modelopresentacion'] ?></td>
-                                            <td><?php echo number_format($dat['precioVenta'], 2, '.', ''); ?></td>
-                                            <td><?php echo number_format($dat['PrecioCompra'], 2, '.', ''); ?></td>                                    
-                                        </tr>
-                                    <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                <table id="tablaproductos" class="ui celled table" style="width:100%">
+                  <thead class="text-center">
+                    <tr>
+                      <th>id</th>
+                      <th>Fecha</th>
+                      <th>Contacto</th>
+                      <th>Total</th>
+                      <th>Abonado</th>
+                      <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
       </div>
     </div>
@@ -151,94 +101,59 @@ WHERE al.IsVisible = 1
 </div>
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="JS/EditarProducto.js"></script>
+  <script src="JS/Creditos.js"></script>
 
-
-<script>    
-
-    $(document).ready(function() {
-      tablaproductos = $("#tablaproductos").DataTable({
-          "columnDefs": [{
-              "targets": -1,
-              "data": null,              
-              "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar' data-toggle='modal' data-target='.bd-example-modal-lg'>Editar</button>&nbsp;&nbsp;&nbsp;<button class='btn btn-danger btnEliminar'>Eliminar</button></div>"
-          }],
-        
-          "order": [
-              [1, 'asc']
-          ],
-          "language": {
-              "lengthMenu": "Mostrar _MENU_ registros",
-              "zeroRecords": "No se encontraron resultados",
-              "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-              "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-              "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-              "sSearch": "Buscar:",
-              "oPaginate": {
-                  "sFirst": "Primero",
-                  "sLast": "Último",
-                  "sNext": "Siguiente",
-                  "sPrevious": "Anterior"
-              },
-              "sProcessing": "Procesando...",
-          }
-      });
-    });
-</script>
 
 <?php
   include_once "./Views/parte_inferior.php"
 ?>
 
+<!-- Modal de abonos --->
+
+<!-- Modal -->
+<div class="modal fade" id="abonos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Abono Global</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+            <input type="text" hidden id="idfac" name = "idfac" value = "2">
+
+            <div class="form-group">
+              <label for="formGroupExampleInput">Valor</label>
+              <input type="number" class="form-control" id="valor" name = "valor" placeholder="Valor (Obligatorio)" required>
+            </div>
+
+            <div class="form-group">
+              <label for="formGroupExampleInput">Concepto</label>
+              <input type="text" class="form-control" id = "concepto" name = "concepto" placeholder="Concepto" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="formGroupExampleInput">Metodo de Pago</label>
+              <input type="text" class="form-control" id = "metodopago" name = "metodopago" placeholder="Metodo de pago" Value = "Efectivo" required>
+            </div>
+
+            <div class = "form-group">
+              <button type="button" onclick = "enviarabono()" class="btn btn-primary">Guardar</button>
+            </div>            
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- terminar de abonos -->
+
 
 <style>
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
 .card-header {
   background: #9ca2aa;
 }
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
-.btn-warning {
-  margin-top: 32px;
-}
-
-
-/* adminlte.min.css | http://localhost/administracion/Virtual_Innova/dashboard/Views/dist/css/adminlte.min.css */
-
-.layout-navbar-fixed .wrapper .content-wrapper {
-  /* margin-top: calc(3.5rem + 1px); */
-  /* margin-top: calc\(3.5rem +; */
-  /* margin-top: calc\(3.5rem; */
-  /* margin-top: calc\(3.5re; */
-  /* margin-top: calc\(3.5r; */
-  /* margin-top: calc\(3.5; */
-  /* margin-top: calc\(3.; */
-  /* margin-top: calc\(3; */
-  /* margin-top: calc\(; */
-  margin-top: 0px;
-}
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
-.btn-success {
-  margin-right: 137px;
-}
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/almacenes.php */
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/verProductosCRUD.php */
-
-.card {
-  margin-left: -1px;
-  margin-right: 0px;
-}
-
-
 </style>

@@ -257,4 +257,19 @@ switch($valordeConsulta){
 
 
         break;
+
+    case 21:
+
+        $almacen = (isset($_POST['almacen'])) ? $_POST['almacen'] : '';
+        
+        $consulta = "SELECT al.IDCodigoAlmacen, al.NombreArticulo, al.Codigo1, aluno.Stock from almacen as al INNER JOIN $almacen as aluno ON aluno.IDCodigoAlmacenPK = al.IDCodigoAlmacen WHERE aluno.Stock > 0  AND al.IsVisible = 1";       
+        
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
+        $conexion = NULL;
+        
+        break;
 }

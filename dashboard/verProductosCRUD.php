@@ -18,10 +18,7 @@
     uno.Stock, 
     al.Marca, 
     al.Notas,
-    uno.Stock as almacenuno,
-    dos.Stock as almacendos,
-    tres.Stock as almacentres,
-    cuatro.Stock as almacencuatro
+    uno.Stock as almacenuno
 FROM almacen as al 
 INNER JOIN almacenuno as uno on uno.IDCodigoAlmacenPK = al.IDCodigoAlmacen 
 INNER JOIN almacendos as dos on dos.IDCodigoAlmacenPK = al.IDCodigoAlmacen
@@ -212,24 +209,6 @@ WHERE al.IsVisible = 1
 .btn-warning {
   margin-top: 32px;
 }
-
-
-/* adminlte.min.css | http://localhost/administracion/Virtual_Innova/dashboard/Views/dist/css/adminlte.min.css */
-
-.layout-navbar-fixed .wrapper .content-wrapper {
-  /* margin-top: calc(3.5rem + 1px); */
-  /* margin-top: calc\(3.5rem +; */
-  /* margin-top: calc\(3.5rem; */
-  /* margin-top: calc\(3.5re; */
-  /* margin-top: calc\(3.5r; */
-  /* margin-top: calc\(3.5; */
-  /* margin-top: calc\(3.; */
-  /* margin-top: calc\(3; */
-  /* margin-top: calc\(; */
-  margin-top: 0px;
-}
-
-
 /* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
 
 .btn-success {

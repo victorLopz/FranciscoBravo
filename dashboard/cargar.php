@@ -186,22 +186,6 @@
   margin-top: 0px;
 }
 
-
-/* adminlte.min.css | http://localhost/administracion/Virtual_Innova/dashboard/Views/dist/css/adminlte.min.css */
-
-.layout-navbar-fixed .wrapper .content-wrapper {
-  /* margin-top: calc(3.5rem + 1px); */
-  /* margin-top: calc\(3.5rem +; */
-  /* margin-top: calc\(3.5rem; */
-  /* margin-top: calc\(3.5re; */
-  /* margin-top: calc\(3.5r; */
-  /* margin-top: calc\(3.5; */
-  /* margin-top: calc\(3.; */
-  /* margin-top: calc\(3; */
-  /* margin-top: calc\(; */
-  margin-top: 0px;
-}
-
 /* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/almacenes.php */
 
 .card {

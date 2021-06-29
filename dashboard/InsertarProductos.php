@@ -99,17 +99,3 @@
 <?php
   include_once "./Views/parte_inferior.php"
 ?>
-<style>
-.layout-navbar-fixed .wrapper .content-wrapper {
-  /* margin-top: calc(3.5rem + 1px); */
-  /* margin-top: calc\(3.5rem +; */
-  /* margin-top: calc\(3.5rem; */
-  /* margin-top: calc\(3.5re; */
-  /* margin-top: calc\(3.5r; */
-  /* margin-top: calc\(3.5; */
-  /* margin-top: calc\(3.; */
-  /* margin-top: calc\(3; */
-  /* margin-top: calc\(; */
-  margin-top: 0px;
-}
-</style>

@@ -1,4 +1,0 @@
-<?php
-
-define('PASEWEB','true');
-

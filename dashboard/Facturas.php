@@ -187,7 +187,6 @@
     <!-- /.content -->
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="JS/Facturar.js"></script>
   
 <?php
   include_once "./Views/parte_inferior.php"
@@ -208,23 +207,6 @@
   margin-top: 32px;
 }
 
-
-/* adminlte.min.css | http://localhost/administracion/Virtual_Innova/dashboard/Views/dist/css/adminlte.min.css */
-
-.layout-navbar-fixed .wrapper .content-wrapper {
-  /* margin-top: calc(3.5rem + 1px); */
-  /* margin-top: calc\(3.5rem +; */
-  /* margin-top: calc\(3.5rem; */
-  /* margin-top: calc\(3.5re; */
-  /* margin-top: calc\(3.5r; */
-  /* margin-top: calc\(3.5; */
-  /* margin-top: calc\(3.; */
-  /* margin-top: calc\(3; */
-  /* margin-top: calc\(; */
-  margin-top: 0px;
-}
-
-
 /* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
 
 .btn-success {
@@ -240,7 +222,4 @@
   margin-left: 17px;
   margin-right: 15px;
 }
-
-
-
 </style>

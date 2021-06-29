@@ -4,8 +4,15 @@
 
 <?php
 session_start();
+
+$validacion = "demo@admin.com";
+
 if($_SESSION["s_usuario"] === null){
     header("Location: ../index.php");
+}
+
+if(strcmp($_SESSION["s_usuario"], $validacion)){
+  header("Location: ../../index.php");
 }
 ?>
   
@@ -81,7 +88,7 @@ if($_SESSION["s_usuario"] === null){
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
       <img src="Views/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">DOS HERMANOS</span>
+      <span class="brand-text font-weight-light">BRAVO´S</span>
     </a>
 
     <!-- Sidebar -->

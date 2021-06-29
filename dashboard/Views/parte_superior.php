@@ -4,9 +4,17 @@
 
 <?php
 session_start();
+
+$validacion = "admin@admin.com";
+
 if($_SESSION["s_usuario"] === null){
     header("Location: ../index.php");
 }
+
+if(strcmp($_SESSION["s_usuario"], $validacion)){
+  header("Location: ../index.php");
+}
+
 ?>
   
   <meta charset="utf-8">
@@ -18,8 +26,6 @@ if($_SESSION["s_usuario"] === null){
 
   <link rel="stylesheet" href="Views/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="Views/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../Views/dist/css/adminlte.min.css">
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -29,7 +35,7 @@ if($_SESSION["s_usuario"] === null){
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="Views/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="Views/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="Views/dist/css/adminlte.css">
   <!-- Data TABLE -->
 
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> 
@@ -41,7 +47,7 @@ if($_SESSION["s_usuario"] === null){
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="Views/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__wobble" src="Views/dist/img/avatar.png" alt="avatar" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -55,7 +61,7 @@ if($_SESSION["s_usuario"] === null){
         <a href="./index.php" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contactos</a>
+        <a href="http://innovavirtual.es/" class="nav-link">Contactos</a>
       </li>
     </ul>
 
@@ -79,8 +85,8 @@ if($_SESSION["s_usuario"] === null){
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="Views/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">DOS HERMANOS</span>
+      <img src="Views/dist/img/avatar.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">BRAVO´S</span>
     </a>
 
     <!-- Sidebar -->
@@ -91,7 +97,7 @@ if($_SESSION["s_usuario"] === null){
           <img src="Views/dist/img/LogotipoInnova.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">INNOVA VIRTUAL</a>
+          <a class="d-block">INNOVA VIRTUAL</a>
         </div>
       </div>
 
@@ -156,6 +162,12 @@ if($_SESSION["s_usuario"] === null){
                 <a href="verProductosCRUD.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="datos.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clientes</p>
                 </a>
               </li>
               <!--<li class="nav-item">

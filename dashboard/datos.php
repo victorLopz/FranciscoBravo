@@ -86,3 +86,11 @@
 <?php
   include_once "./Views/parte_inferior.php"
 ?>
+
+<style>
+/* adminlte.min.css | http://localhost/administracion/Virtual_Innova/dashboard/Views/dist/css/adminlte.min.css */
+
+.layout-navbar-fixed .wrapper .content-wrapper {
+  margin-top: 0px;
+}
+</style>

@@ -1,5 +1,3 @@
-//Consultas de Usuarios metodo AJAX
-console.clear();
 Viewusuarios();
 
 function Viewusuarios(){
@@ -102,83 +100,6 @@ function Viewusuarios(){
 });
 }
 
-$(function () {
-
-  let uno, dos, tres, cuatro;
-
-  $.ajax({
-    url: '../dashboard/bd/Consultas.php',
-    type:"POST",
-    datatype: "json",
-    data: {
-        valordeConsulta: 10, 
-    }, 
-    success:function(data){
-      
-          uno = JSON.parse(data)[0].almacenuno;
-         dos = JSON.parse(data)[0].almacendos;
-         tres = JSON.parse(data)[0].almacentres;
-         cuatro = JSON.parse(data)[0].almacencuatro;
-
-         let almacen1 = uno;
-        let almacen2 = dos;
-        let almacen3 = tres;
-        let almacen4 = cuatro;
-
-    var donutData = [
-        {
-          label: 'Almacen 1',
-          data : almacen1,
-          color: '#ffc107'
-        },
-        {
-          label: 'Almacen 2',
-          data : almacen2,
-          color: '#28a745'
-        },
-        {
-          label: 'Almacen 3',
-          data : almacen3,
-          color: '#17a2b8'
-        },
-        {
-          label: 'Almacen 4',
-          data : almacen4,
-          color: '#dc3545'
-        }
-      ]
-      $.plot('#donut-chart', donutData, {
-        series: {
-          pie: {
-            show       : true,
-            radius     : 1,
-            innerRadius: 0.5,
-            label      : {
-              show     : true,
-              radius   : 2 / 3,
-              formatter: labelFormatter,
-              threshold: 0.1
-            }
-  
-          }
-        },
-        legend: {
-          show: false
-        }
-      })
-      /*
-       * END DONUT CHART
-       */
-  
-    }
- });
-    /*
-     * DONUT CHART
-     * -----------
-     */
-
-    
-})
 
 function labelFormatter(label, series) {
     return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
@@ -188,6 +109,38 @@ function labelFormatter(label, series) {
   }
 
   $(document).ready(function(){
+
+    $(function () {
+      'use strict'
+  
+      var salesChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+          {
+            label: 'Digital Goods',
+            backgroundColor: 'rgba(60,141,188,0.9)',
+            borderColor: 'rgba(60,141,188,0.8)',
+            pointRadius: false,
+            pointColor: '#3b8bba',
+            pointStrokeColor: 'rgba(60,141,188,1)',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data: [28, 48, 40, 19, 86, 27, 90]
+          },
+          {
+            label: 'Electronics',
+            backgroundColor: 'rgba(210, 214, 222, 1)',
+            borderColor: 'rgba(210, 214, 222, 1)',
+            pointRadius: false,
+            pointColor: 'rgba(210, 214, 222, 1)',
+            pointStrokeColor: '#c1c7d1',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(220,220,220,1)',
+            data: [65, 59, 80, 81, 56, 55, 40]
+          }
+        ]
+      }
+    })
 
     
   $.ajax({
@@ -233,26 +186,6 @@ function labelFormatter(label, series) {
       $('#unochek').change(function() {
         estado = $(this).prop('checked');
         cambiarestado(estado, 1);
-      })
-
-      $('#doschek').change(function() {
-        estado = $(this).prop('checked');
-        cambiarestado(estado, 2);
-      })
-
-      $('#treschek').change(function() {
-        estado = $(this).prop('checked');
-        cambiarestado(estado, 3);
-      })
-
-      $('#cuatrochek').change(function() {
-        estado = $(this).prop('checked');
-        cambiarestado(estado, 4);
-      })
-
-      $('#tienda').change(function() {
-        estado = $(this).prop('checked');
-        cambiartienda(estado, 5);
       })
     })
   })
@@ -306,79 +239,3 @@ function labelFormatter(label, series) {
     });
 
   }
-
-  $.ajax({
-    url: '../dashboard/bd/grafica.php',
-    type:"POST",
-    datatype: "json",
-    data: {
-        valordeConsulta: 1,
-    }, 
-    success: function(data, semana) {
-      console.log(semana);
-
-
-  $(function () {
-    'use strict'
-    var salesChartCanvas = $('#salesChart').get(0).getContext('2d')
-  
-    var salesChartData = {
-        labels: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
-        datasets: [
-          {
-            label: 'Digital Goods',
-            backgroundColor: 'rgba(60,141,188,0.9)',
-            borderColor: 'rgba(60,141,188,0.8)',
-            pointRadius: false,
-            pointColor: '#3b8bba',
-            pointStrokeColor: 'rgba(60,141,188,1)',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(60,141,188,1)',
-            data: [JSON.parse(data)[0].contado, JSON.parse(data)[1].contado, JSON.parse(data)[2].contado, JSON.parse(data)[3].contado, JSON.parse(data)[4].contado, JSON.parse(data)[5].contado, JSON.parse(data)[6].contado]
-          },
-          {
-            label: 'Electronics',
-            backgroundColor: 'rgba(210, 214, 222, 1)',
-            borderColor: 'rgba(210, 214, 222, 1)',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [JSON.parse(semana)[0].contado, JSON.parse(semana)[1].contado, JSON.parse(semana)[2].contado, JSON.parse(semana)[3].contado, JSON.parse(semana)[4].contado, JSON.parse(semana)[5].contado, JSON.parse(semana)[6].contado]
-          }
-        ]
-      }
-  
-    var salesChartOptions = {
-      maintainAspectRatio: false,
-      responsive: true,
-      legend: {
-        display: false
-      },
-      scales: {
-        xAxes: [{
-          gridLines: {
-            display: false
-          }
-        }],
-        yAxes: [{
-          gridLines: {
-            display: false
-          }
-        }]
-      }
-    }
-  
-    var salesChart = new Chart(salesChartCanvas, {
-      type: 'line',
-      data: salesChartData,
-      options: salesChartOptions
-    })
-  
-  })
-}
-});  
-  
-
-  

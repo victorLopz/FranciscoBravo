@@ -2,7 +2,6 @@
   include_once "./Views/parte_superior.php"
 ?>
 
-
 <?php
     include_once 'bd/conexion.php';
     $objeto = new Conexion();
@@ -132,23 +131,6 @@
   margin-top: 32px;
 }
 
-
-/* adminlte.min.css | http://localhost/administracion/Virtual_Innova/dashboard/Views/dist/css/adminlte.min.css */
-
-.layout-navbar-fixed .wrapper .content-wrapper {
-  /* margin-top: calc(3.5rem + 1px); */
-  /* margin-top: calc\(3.5rem +; */
-  /* margin-top: calc\(3.5rem; */
-  /* margin-top: calc\(3.5re; */
-  /* margin-top: calc\(3.5r; */
-  /* margin-top: calc\(3.5; */
-  /* margin-top: calc\(3.; */
-  /* margin-top: calc\(3; */
-  /* margin-top: calc\(; */
-  margin-top: 0px;
-}
-
-
 /* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
 
 .btn-success {
@@ -162,6 +144,4 @@
   margin-left: 14px;
   margin-right: 13px;
 }
-
-
 </style>

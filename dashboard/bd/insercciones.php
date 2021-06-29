@@ -177,4 +177,16 @@ switch($valordeConsulta){
         }
         break;
 
+    case 7:
+
+        $valor = (isset($_POST['valor'])) ? $_POST['valor'] : '';
+        $concepto = (isset($_POST['concepto'])) ? $_POST['concepto'] : '';
+        $metodopago = (isset($_POST['metodopago'])) ? $_POST['metodopago'] : '';
+        $idfactura = (isset($_POST['idfactura'])) ? $_POST['idfactura'] : '';
+
+        $consulta = "INSERT INTO abonoshis(montoAbonado, Concepto, Metododepago, idFactura) VALUES('$valor', '$concepto', '$metodopago', '$idfactura') ";			
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+
+        break;
 }
