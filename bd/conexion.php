@@ -11,9 +11,9 @@
             define('password',''); 
         }else{
             define('servidor','localhost');
-            define('nombre_bd','residencial');
-            define('usuario','');
-            define('password','123456Root'); 
+            define('nombre_bd','u128272301_bravos');
+            define('usuario','u128272301_root');
+            define('password','rWK$cw9:N'); 
         }       
          
         $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');

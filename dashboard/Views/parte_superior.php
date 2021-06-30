@@ -250,29 +250,28 @@ if(strcmp($_SESSION["s_usuario"], $validacion)){
                   <p>Tienda 1</p>
                 </a>
               </li>
-              <!--<li class="nav-item">
-                <a href="./tienda2.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tienda 2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./tienda3.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tienda 3</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./tienda4.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tienda 4</p>
-                </a>
-              </li>-->
             </ul>
           </li>
-
-          <!-- Adivina ?? Salimos -->
-          
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-toolbox"></i>
+              <p>
+                Configuración
+                <i class="fas fa-angle-left right"></i>
+                <!--<span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="passwordcon.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Contraseñas</p>
+                  </a>
+                </li>
+            </ul>
+          </li>
+            </ul>
+          </li>        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

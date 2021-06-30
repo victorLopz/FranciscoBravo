@@ -192,9 +192,25 @@ switch($valordeConsulta){
             $data = "exito";
         }else{
             $data = "Revisar";
-        }
+        }    
+        print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
+        $conexion = NULL;
+        break;
 
-    
+    case 8:
+
+        $use = (isset($_POST['use'])) ? $_POST['use'] : '';
+        $comtra = (isset($_POST['comtra'])) ? $_POST['comtra'] : '';
+
+        $consulta = "UPDATE usuarios SET PasswordName = '$comtra' WHERE IdUsuarios = '$use'";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+
+        if($resultado){
+            $data = "exito";
+        }else{
+            $data = "Revisar";
+        }    
         print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
         $conexion = NULL;
 

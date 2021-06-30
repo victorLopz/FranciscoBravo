@@ -11,9 +11,9 @@ class Conexion{
             define('password',''); 
         }else{
             define('servidor','localhost');
-            define('nombre_bd','u128272301_doshermanos_IV');
-            define('usuario','u128272301_u122030778_vic');
-            define('password','123456Root'); 
+            define('nombre_bd','u128272301_bravos');
+            define('usuario','u128272301_root');
+            define('password','rWK$cw9:N'); 
         } 
  
          $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');

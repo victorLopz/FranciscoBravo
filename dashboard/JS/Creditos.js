@@ -13,7 +13,12 @@ $(document).ready(function() {
                 { "data": "resta" },
                 { "data": null },
         ],
-        "lengthMenu": [ 10, 25, 50, 75, 100, 200]
+        "columnDefs": [{
+            "targets" : -1,
+            "data" : null,
+            "defaultContent": "<div class='text-center row'><button class='btn btn-primary btneditar' data-toggle='modal' data-target='.bd-example-modal-sm'><i class='far fa-eye'></i></button>&nbsp;<button class='btn btn-success abono' id= 'abono' data-toggle='modal' data-target='#abonos'><i class='far fa-money-bill-alt'></i></button></div>",
+        }],
+        "lengthMenu": [ 10, 25, 50, 75, 100, 200],
     });
 
     new $.fn.dataTable.Buttons( table, {
