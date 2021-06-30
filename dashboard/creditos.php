@@ -19,11 +19,15 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
  
-
     <div class="card">
         <div class="card-header">
-            Deudas pendientes
+          <div class = "row">
+              <div class="col-sm">
+              Deudas pendientes
+              </div>
+          </div>        
         </div>
+
         <div class="card-body">
             <div class="table-responsive"  style="margin-end:10px">
                 <table id="tablaproductos" class="ui celled table" style="width:100%">
@@ -34,7 +38,8 @@
                       <th>Contacto</th>
                       <th>Total</th>
                       <th>Abonado</th>
-                      <th>Acciones</th>
+                      <th>Restante</th>
+                      <th class="botones">Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -43,62 +48,6 @@
             </div>
       </div>
     </div>
-    
-<div class="modal fade bd-example-modal-lg" id="modaUpdate" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    <form id="formPersonas">    
-            <div class="modal-body">
-              <input type="text" hidden id="idalmacen" name="idalmacen">
-
-              <div class="form-row">
-                  <div class="form-group col-md-4">
-                      <label for="inputCity">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" required>
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputState">Codigo 1</label>
-                      <input type="text" class="form-control" id="codigo1" required>
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputState">Stock</label>
-                      <input type="text" class="form-control" id="Stock" required>
-                  </div>
-
-              </div>
-              <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Marca</label>
-                    <input type="text" class="form-control" id="marca" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Modelo / Presentacion</label>
-                    <input type="text" class="form-control" id="modelopresentacion" required>
-                </div>
-            </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputCity">Precio  de Venta</label>
-                        <input type="number" class="form-control" id="pventa" required>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputState">Precio de Compra</label>
-                        <input type="number" class="form-control" id="pcompra" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="inputPassword4">Comentario</label>
-                      <input type="text" class="form-control" id="comentario">
-                    </div>
-                </div>        
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
-            </div>
-        </form>
-    </div>
-  </div>
-</div>
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="JS/Creditos.js"></script>
@@ -123,7 +72,7 @@
       <div class="modal-body">
         <form>
 
-            <input type="text" hidden id="idfac" name = "idfac" value = "2">
+            <input type="text" hidden id="idfac" name = "idfac">
 
             <div class="form-group">
               <label for="formGroupExampleInput">Valor</label>
@@ -151,6 +100,41 @@
 
 <!-- terminar de abonos -->
 
+<!-- Detalle de los abonos -->
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" id = "contenido" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Detalles de los abonos</h5>
+        <button type="button" onclick = "eliminar()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+      
+      <div class="modal-body card">
+          <div class="card-body">
+            <h5 class="card-title">Abonos</h5>
+            <table class="table table-hover" id = "abonostabla">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Concepto</th>
+                  <th scope="col">Metodo de Pago</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <style>
 .card-header {

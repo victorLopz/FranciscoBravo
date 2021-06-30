@@ -24,6 +24,7 @@ if(strcmp($_SESSION["s_usuario"], $validacion)){
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
   <link rel="stylesheet" href="Views/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="Views/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   
@@ -143,6 +144,14 @@ if(strcmp($_SESSION["s_usuario"], $validacion)){
                 </a>
               </li>
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="deudaspagadas.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Creditos Cancelados</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a  href="#" class="nav-link">
@@ -162,12 +171,6 @@ if(strcmp($_SESSION["s_usuario"], $validacion)){
                 <a href="verProductosCRUD.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver Productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="datos.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Clientes</p>
                 </a>
               </li>
               <!--<li class="nav-item">
@@ -202,12 +205,38 @@ if(strcmp($_SESSION["s_usuario"], $validacion)){
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Clientes
+                <i class="fas fa-angle-left right"></i>
+                <!--<span class="badge badge-info right">6</span>-->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="datos.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Añadir Clientes</p>
+                  </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="verclientes.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ver Clientes</p>
+                  </a>
+                </li>
+            </ul>
+          </li>
 
           <!-- Entramos -->
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file-signature"></i>
+              <i class="nav-icon fas fa-store"></i>
               <p>
                 Tiendas
                 <i class="fas fa-angle-left right"></i>

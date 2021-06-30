@@ -44,7 +44,8 @@
                 <label class="" for="inputGroupSelect01">Tienda</label>               
                 <select class="custom-select" id="inputGroupSelect01">
                     <option selected>Choose...</option>
-                    <option value="1">Tienda 1</option>
+                    <option value="1">Ventas</option>
+                    <option value="2">Productos mas vendidos</option>
                 </select>
             </div>
         </div>

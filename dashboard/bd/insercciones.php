@@ -186,7 +186,17 @@ switch($valordeConsulta){
 
         $consulta = "INSERT INTO abonoshis(montoAbonado, Concepto, Metododepago, idFactura) VALUES('$valor', '$concepto', '$metodopago', '$idfactura') ";			
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
+        $resultado->execute();      
+        
+        if($resultado){
+            $data = "exito";
+        }else{
+            $data = "Revisar";
+        }
+
+    
+        print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
+        $conexion = NULL;
 
         break;
 }

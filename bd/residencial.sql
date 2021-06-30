@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 25-06-2021 a las 10:17:47
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 7.3.28
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-06-2021 a las 10:25:27
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,50 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `residencial`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `abonoshis`
+--
+
+CREATE TABLE `abonoshis` (
+  `idAbonado` int(11) NOT NULL,
+  `montoAbonado` double(10,2) NOT NULL,
+  `Concepto` text NOT NULL,
+  `Metododepago` varchar(30) NOT NULL DEFAULT 'Efectivo',
+  `fechaEmision` datetime NOT NULL DEFAULT current_timestamp(),
+  `idFactura` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `abonoshis`
+--
+
+INSERT INTO `abonoshis` (`idAbonado`, `montoAbonado`, `Concepto`, `Metododepago`, `fechaEmision`, `idFactura`) VALUES
+(1, 99.00, 'Abono', 'Efectivo', '2021-06-29 11:06:10', 3),
+(2, 99.00, 'Hola', 'Efectivo', '2021-06-29 11:09:34', 4),
+(3, 50.00, 'Abonop', '', '2021-06-29 11:09:50', 3),
+(4, 2000.00, 'Hola', 'Efectivo', '2021-06-29 11:17:35', 3),
+(5, 99.00, 'Abono mayor', 'Efectivo', '2021-06-29 11:40:55', 3),
+(6, 4000.00, 'Abono Grande', 'Efectivo', '2021-06-29 11:46:10', 4),
+(7, 100.00, 'Abono de cargador', 'Efectivo', '2021-06-29 11:49:37', 5),
+(8, 200.00, 'Siguiente sera en la quincena', 'Efectivo', '2021-06-29 12:52:01', 5),
+(9, 1752.00, 'abONADO TODO', 'Efectivo', '2021-06-29 14:13:54', 0),
+(10, 1752.00, 'Abono total', 'Efectivo', '2021-06-29 14:14:51', 3),
+(11, 45901.00, 'Abonado', 'Efectivo', '2021-06-29 14:34:33', 0),
+(12, 45901.00, 'Abonado', 'Efectivo', '2021-06-29 14:37:18', 0),
+(13, 45901.00, 'PAgo', 'Efectivo', '2021-06-29 14:37:34', 4),
+(14, 50.00, 'PAgo', 'Efectivo', '2021-06-29 14:44:22', 5),
+(15, 50.00, 'Abono', 'Efectivo', '2021-06-29 14:46:17', 5),
+(16, 0.00, '', 'Efectivo', '2021-06-29 15:02:00', 7),
+(17, 0.00, '', 'Efectivo', '2021-06-29 15:04:33', 9),
+(18, 1000.00, 'Primer Abono', 'Efectivo', '2021-06-29 15:05:33', 0),
+(19, 1000.00, 'primer Abono', 'Efectivo', '2021-06-29 15:05:57', 9),
+(20, 0.00, '', 'Efectivo', '2021-06-30 00:35:51', 10),
+(21, 1000.00, 'Te vale verga', 'Efectivo', '2021-06-30 00:37:09', 10),
+(22, 300.00, 'Simon Chele', 'Efectivo', '2021-06-30 00:38:57', 10),
+(23, 2700.00, 'Validacion', 'Efectivo', '2021-06-30 00:42:51', 10);
 
 -- --------------------------------------------------------
 
@@ -47,9 +91,10 @@ CREATE TABLE `almacen` (
 --
 
 INSERT INTO `almacen` (`IDCodigoAlmacen`, `NombreArticulo`, `Marca`, `Modelopresentacion`, `Codigo1`, `Codigo2`, `Notas`, `precioVenta`, `IsVisible`, `PrecioCompra`, `Stock`, `TimeSpace`) VALUES
-(1, 'Gaseosa', 'Coca Cola', 'medio litro', '0987457', '', '', 20, 1, 10, 100, '2021-06-25 01:35:30'),
-(2, 'computadora', 'Dell', 'Core i9+', '8643325788', '', '', 12000, 1, 10000, 100, '2021-06-25 01:36:04'),
-(3, 'Cargador', 'Huawei', '22.5 Wts', '78432367789', '', '', 800, 1, 500, 100, '2021-06-25 01:36:36');
+(1, 'Gaseosa', 'Coca Cola', 'Medio litro', '0987457', 'nulo', '', 20, 1, 10, 100, '2021-06-25 01:35:30'),
+(2, 'Computadora', 'Dell', 'Core i9+', '8643325788', 'nulo', '', 12000, 1, 10000, 100, '2021-06-25 01:36:04'),
+(3, 'Cargador', 'Huawei', '22.5 Wts', '78432367789', '', '', 800, 1, 500, 100, '2021-06-25 01:36:36'),
+(4, 'Aceite havoline 4t rojo', 'Havoline', '4T', '5478908', 'nulo', '', 220, 1, 190, 10, '2021-06-25 11:15:17');
 
 -- --------------------------------------------------------
 
@@ -71,9 +116,9 @@ CREATE TABLE `almacencuatro` (
 --
 
 INSERT INTO `almacencuatro` (`IDAlmacencuatro`, `IDCodigoAlmacenPK`, `Stock`, `Notas`, `isVisible`, `TimeSpace`) VALUES
-(1, 1, 0, '', 1, '2021-06-25 07:35:30'),
-(2, 2, 0, '', 1, '2021-06-25 07:36:05'),
-(3, 3, 0, '', 1, '2021-06-25 07:36:36');
+(1, 1, 0, '', 1, '2021-06-25 13:35:30'),
+(2, 2, 0, '', 1, '2021-06-25 13:36:05'),
+(3, 3, 0, '', 1, '2021-06-25 13:36:36');
 
 -- --------------------------------------------------------
 
@@ -95,9 +140,9 @@ CREATE TABLE `almacendos` (
 --
 
 INSERT INTO `almacendos` (`IDAlmacendos`, `IDCodigoAlmacenPK`, `Stock`, `Notas`, `isVisible`, `TimeSpace`) VALUES
-(1, 1, 0, '', 1, '2021-06-25 07:35:30'),
-(2, 2, 0, '', 1, '2021-06-25 07:36:04'),
-(3, 3, 0, '', 1, '2021-06-25 07:36:36');
+(1, 1, 0, '', 1, '2021-06-25 13:35:30'),
+(2, 2, 0, '', 1, '2021-06-25 13:36:04'),
+(3, 3, 0, '', 1, '2021-06-25 13:36:36');
 
 -- --------------------------------------------------------
 
@@ -119,9 +164,9 @@ CREATE TABLE `almacentres` (
 --
 
 INSERT INTO `almacentres` (`IDAlmacentres`, `IDCodigoAlmacenPK`, `Stock`, `Notas`, `isVisible`, `TimeSpace`) VALUES
-(1, 1, 0, '', 1, '2021-06-25 07:35:30'),
-(2, 2, 0, '', 1, '2021-06-25 07:36:04'),
-(3, 3, 0, '', 1, '2021-06-25 07:36:36');
+(1, 1, 0, '', 1, '2021-06-25 13:35:30'),
+(2, 2, 0, '', 1, '2021-06-25 13:36:04'),
+(3, 3, 0, '', 1, '2021-06-25 13:36:36');
 
 -- --------------------------------------------------------
 
@@ -144,8 +189,9 @@ CREATE TABLE `almacenuno` (
 
 INSERT INTO `almacenuno` (`IDAlmacenuno`, `IDCodigoAlmacenPK`, `Stock`, `Notas`, `isVisible`, `TimeSpace`) VALUES
 (1, 1, 100, '', 1, '2021-06-25 07:39:54'),
-(2, 2, 100, '', 1, '2021-06-25 07:36:04'),
-(3, 3, 100, '', 1, '2021-06-25 07:36:36');
+(2, 2, 92, '', 1, '2021-06-29 21:04:33'),
+(3, 3, 86, '', 1, '2021-06-30 06:35:51'),
+(4, 4, 5, '', 1, '2021-06-29 20:54:15');
 
 -- --------------------------------------------------------
 
@@ -166,6 +212,17 @@ CREATE TABLE `catalogodatos` (
   `TimeSpace` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `catalogodatos`
+--
+
+INSERT INTO `catalogodatos` (`IDcatalogoDatos`, `Primer_Nombre_Empresa`, `Apellidos`, `NumeroRUC_Cedula`, `Direccion`, `Numero_Telefonico`, `Email`, `IsVisible`, `Comentario`, `TimeSpace`) VALUES
+(1, 'Kessler', 'Torrez', '098765678909S', 'Por ahi', 2147483647, 'example@gmail.com', 1, 'Buen cliente', '2021-06-26 17:48:49'),
+(2, 'Victor Lopez', '', '0010301990000S', 'Sabana Grande', 89823811, 'example@gmail.com', 1, 'Hola', '2021-06-30 02:18:12'),
+(3, 'Josue Lara Salinas', '', '0010301990000AS', '1000', 89823811, 'castillolopez735@gma', 1, 'Hola', '2021-06-30 02:19:05'),
+(4, 'Josue Lara Salinas', '', '', '1000', 89823811, 'castillolopez735@gma', 1, 'pedooo', '2021-06-30 02:19:47'),
+(5, 'Josue Lara Salinas', '', '', '1000', 89823811, 'castillolopez735@gma', 1, 'No quiero', '2021-06-30 02:23:31');
+
 -- --------------------------------------------------------
 
 --
@@ -173,11 +230,15 @@ CREATE TABLE `catalogodatos` (
 --
 
 CREATE TABLE `clientes` (
-  `IDClientes` int(11) NOT NULL,
-  `IDcatalogoDatosPK` int(11) NOT NULL,
-  `IDEstadoClientePK` int(11) NOT NULL,
-  `Comentario` varchar(300) NOT NULL,
-  `IsVisible` int(11) NOT NULL DEFAULT 1
+  `idClientes` int(11) NOT NULL,
+  `timeSpace` datetime NOT NULL DEFAULT current_timestamp(),
+  `isVisible` int(11) NOT NULL DEFAULT 1,
+  `nombreyapellido` varchar(50) NOT NULL,
+  `ruc` varchar(50) NOT NULL,
+  `direccion` varchar(200) NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `comentario` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -199,7 +260,7 @@ CREATE TABLE `descuento` (
 --
 
 INSERT INTO `descuento` (`idDescuento`, `estado`, `Comentario`, `timespace`, `almacen`) VALUES
-(1, 0, 'Almacen 1', '0000-00-00', 1),
+(1, 1, 'Almacen 1', '0000-00-00', 1),
 (2, 0, 'Almacen 2', '2021-03-29', 2),
 (3, 0, 'Almacen 3', '2021-03-29', 3),
 (4, 0, 'Almacen 4', '2021-03-29', 4);
@@ -225,7 +286,15 @@ CREATE TABLE `detalledefactura` (
 --
 
 INSERT INTO `detalledefactura` (`IDFacturaDetalle`, `Unidades`, `producto`, `Precio`, `IDFacturaPK`, `TimeSpace`, `preciounit`) VALUES
-(1, 10, 1, 200, 1, '2021-06-25', 20);
+(1, 10, 1, 200, 1, '2021-06-25', 20),
+(2, 1, 2, 12000, 2, '2021-06-25', 12000),
+(3, 5, 3, 4000, 3, '2021-06-25', 800),
+(4, 5, 2, 50000, 4, '2021-06-28', 10000),
+(5, 1, 3, 850, 5, '2021-06-29', 850),
+(6, 5, 4, 1100, 6, '2021-06-29', 220),
+(7, 3, 3, 2400, 8, '2021-06-29', 800),
+(8, 2, 2, 24000, 9, '2021-06-29', 12000),
+(9, 5, 3, 4000, 10, '2021-06-30', 800);
 
 -- --------------------------------------------------------
 
@@ -269,10 +338,10 @@ CREATE TABLE `factura` (
   `AlmacenNumero` int(11) NOT NULL,
   `SubTotal` double DEFAULT NULL,
   `Iva` tinyint(1) DEFAULT NULL,
-  `Total` double NOT NULL,
+  `Total` double(10,2) NOT NULL,
   `fechaEmision` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `montopagado` double NOT NULL,
-  `cambio` double NOT NULL,
+  `montopagado` double(10,0) NOT NULL,
+  `cambio` double(10,0) NOT NULL,
   `IsVisible` int(11) NOT NULL DEFAULT 1,
   `descuento` int(11) NOT NULL,
   `codigoRUCcedula` varchar(50) DEFAULT NULL,
@@ -285,7 +354,16 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`IDFactura`, `Timespace`, `AlmacenNumero`, `SubTotal`, `Iva`, `Total`, `fechaEmision`, `montopagado`, `cambio`, `IsVisible`, `descuento`, `codigoRUCcedula`, `cliente`, `tipofac`) VALUES
-(1, '2021-06-25', 1, 0, NULL, 200, '2021-06-25 07:38:09', 300, 100, 1, 0, '001-030199-0000S', 'Joaquin De Los Angeles', 1);
+(1, '2021-06-25', 1, 0, NULL, 200.00, '2021-06-25 07:38:09', 300, 100, 1, 0, '001-030199-0000S', 'Joaquin De Los Angeles', 1),
+(2, '2021-06-25', 1, 0, NULL, 12000.00, '2021-06-25 16:42:05', 15000, 3000, 1, 0, '0000000000', 'Kessler Torrez', 1),
+(3, '2021-06-25', 1, 0, NULL, 4000.00, '2021-06-25 17:24:51', 5000, 1000, 1, 0, '456789876', 'victor ', 2),
+(4, '2021-06-28', 1, 0, NULL, 50000.00, '2021-06-29 05:31:18', 60000, 10000, 1, 0, '001-12345678-1000R', 'Wasamralayucapanda', 2),
+(5, '2021-06-29', 1, 0, NULL, 850.00, '2021-06-29 17:47:19', 850, 0, 1, 0, '001-12345678-000A', 'Victor Lopez', 2),
+(6, '2021-06-29', 1, 0, NULL, 1100.00, '2021-06-29 20:54:14', 1100, 0, 1, 0, '001-00000000 - 0000A', 'Mariela del Socorro', 2),
+(7, '2021-06-29', 1, 0, NULL, 0.00, '2021-06-29 21:02:00', 12000, 12000, 1, 0, '', 'Foraneo', 2),
+(8, '2021-06-29', 1, 0, NULL, 2400.00, '2021-06-29 21:03:29', 2400, 0, 1, 0, '0987654324567890', 'Kessler Torrez ', 1),
+(9, '2021-06-29', 1, 0, NULL, 24000.00, '2021-06-29 21:04:33', 24000, 0, 1, 0, '098765467890', 'Isabel mayorga', 2),
+(10, '2021-06-30', 1, 0, NULL, 4000.00, '2021-06-30 06:35:51', 4000, 0, 1, 0, '777-777777-7777D', 'Cuneta son machin ', 2);
 
 -- --------------------------------------------------------
 
@@ -411,39 +489,74 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`IdUsuarios`, `IDcatalogoDatosPK`, `IDRolControlUsuariosPK`, `UserName`, `PasswordName`, `TimeSpace`, `IsVisible`, `estado`) VALUES
-(1, 1, 1, 'admin@admin.com', 'demo', '2021-02-21 23:14:05', 1, 0),
-(2, NULL, 2, 'demo@admin.com', 'demo', '2021-03-01 22:13:39', 1, 0),
-(3, NULL, 3, 'lubricantes2@admin.com', 'mobil2018', '2021-03-07 11:25:41', 1, 0),
-(4, NULL, 4, 'lubricantes3@admin.com', 'shell2018', '2021-03-07 13:14:42', 1, 0),
-(5, NULL, 5, 'lubricantes4@admin.com', 'cat2018', '2021-03-31 22:10:20', 1, 0);
+(1, 1, 1, 'admin@admin.com', 'demo', '2021-02-21 23:14:05', 1, 1),
+(2, NULL, 2, 'demo@admin.com', 'demo', '2021-03-01 22:13:39', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vistadeudas`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vistadeudas` (
+`IDFactura` int(11)
+,`fechaEmision` timestamp
+,`cliente` varchar(50)
+,`codigoRUCcedula` varchar(50)
+,`total` double(10,2)
+,`SumaAbonos` double(19,2)
+,`resta` double(19,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vistasaldadas`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vistasaldadas` (
+`IDFactura` int(11)
+,`fechaEmision` timestamp
+,`cliente` varchar(50)
+,`codigoRUCcedula` varchar(50)
+,`total` double(10,2)
+,`SumaAbonos` double(19,2)
+,`resta` double(19,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vistadeudas`
+--
+DROP TABLE IF EXISTS `vistadeudas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistadeudas`  AS SELECT `fac`.`IDFactura` AS `IDFactura`, `fac`.`fechaEmision` AS `fechaEmision`, `fac`.`cliente` AS `cliente`, `fac`.`codigoRUCcedula` AS `codigoRUCcedula`, `fac`.`Total` AS `total`, (select sum(`abonoshis`.`montoAbonado`) from `abonoshis` where `abonoshis`.`idFactura` = `fac`.`IDFactura`) AS `SumaAbonos`, `fac`.`Total`- (select sum(`abonoshis`.`montoAbonado`) from `abonoshis` where `abonoshis`.`idFactura` = `fac`.`IDFactura`) AS `resta` FROM `factura` AS `fac` WHERE `fac`.`tipofac` = 2 AND `fac`.`Total` - (select sum(`abonoshis`.`montoAbonado`) from `abonoshis` where `abonoshis`.`idFactura` = `fac`.`IDFactura`) > 0 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vistasaldadas`
+--
+DROP TABLE IF EXISTS `vistasaldadas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistasaldadas`  AS SELECT `fac`.`IDFactura` AS `IDFactura`, `fac`.`fechaEmision` AS `fechaEmision`, `fac`.`cliente` AS `cliente`, `fac`.`codigoRUCcedula` AS `codigoRUCcedula`, `fac`.`Total` AS `total`, (select sum(`abonoshis`.`montoAbonado`) from `abonoshis` where `abonoshis`.`idFactura` = `fac`.`IDFactura`) AS `SumaAbonos`, `fac`.`Total`- (select sum(`abonoshis`.`montoAbonado`) from `abonoshis` where `abonoshis`.`idFactura` = `fac`.`IDFactura`) AS `resta` FROM `factura` AS `fac` WHERE `fac`.`tipofac` = 2 AND `fac`.`Total` - (select sum(`abonoshis`.`montoAbonado`) from `abonoshis` where `abonoshis`.`idFactura` = `fac`.`IDFactura`) = 0 ;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `abonoshis`
+--
+ALTER TABLE `abonoshis`
+  ADD PRIMARY KEY (`idAbonado`);
+
+--
 -- Indices de la tabla `almacen`
 --
 ALTER TABLE `almacen`
   ADD PRIMARY KEY (`IDCodigoAlmacen`);
-
---
--- Indices de la tabla `almacencuatro`
---
-ALTER TABLE `almacencuatro`
-  ADD PRIMARY KEY (`IDAlmacencuatro`);
-
---
--- Indices de la tabla `almacendos`
---
-ALTER TABLE `almacendos`
-  ADD PRIMARY KEY (`IDAlmacendos`);
-
---
--- Indices de la tabla `almacentres`
---
-ALTER TABLE `almacentres`
-  ADD PRIMARY KEY (`IDAlmacentres`);
 
 --
 -- Indices de la tabla `almacenuno`
@@ -461,7 +574,7 @@ ALTER TABLE `catalogodatos`
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`IDClientes`);
+  ADD PRIMARY KEY (`idClientes`);
 
 --
 -- Indices de la tabla `descuento`
@@ -534,46 +647,34 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `abonoshis`
+--
+ALTER TABLE `abonoshis`
+  MODIFY `idAbonado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT de la tabla `almacen`
 --
 ALTER TABLE `almacen`
-  MODIFY `IDCodigoAlmacen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `almacencuatro`
---
-ALTER TABLE `almacencuatro`
-  MODIFY `IDAlmacencuatro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `almacendos`
---
-ALTER TABLE `almacendos`
-  MODIFY `IDAlmacendos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `almacentres`
---
-ALTER TABLE `almacentres`
-  MODIFY `IDAlmacentres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDCodigoAlmacen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `almacenuno`
 --
 ALTER TABLE `almacenuno`
-  MODIFY `IDAlmacenuno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDAlmacenuno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `catalogodatos`
 --
 ALTER TABLE `catalogodatos`
-  MODIFY `IDcatalogoDatos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDcatalogoDatos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `IDClientes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idClientes` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `descuento`
@@ -585,7 +686,7 @@ ALTER TABLE `descuento`
 -- AUTO_INCREMENT de la tabla `detalledefactura`
 --
 ALTER TABLE `detalledefactura`
-  MODIFY `IDFacturaDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDFacturaDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `detallesinventario`
@@ -603,7 +704,7 @@ ALTER TABLE `estadocliente`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `IDFactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDFactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `historialstock`

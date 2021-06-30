@@ -7,60 +7,6 @@ el('stock').addEventListener('input',function() {
     this.value = val.replace(/\D|\-/,'');
 });
 
-function guadarDatos(){
-    var nombres = $.trim($("#nombres").val());    
-    var apellido =$.trim($("#apellido").val());    
-    var numerodecedula =$.trim($("#numerodecedula").val());    
-    var direccion =$.trim($("#direccion").val());    
-    var telefono =$.trim($("#telefono").val());    
-    var email =$.trim($("#email").val());  
-    var comentario =$.trim($("#comentario").val());
-    var agregarproducto = 1;
-
-    $.ajax({
-        url:"../dashboard/bd/agregarUsuarios.php",
-        type:"POST",
-        datatype: "json",
-        data: {
-            nombres:nombres, 
-            apellido:apellido,
-            numerodecedula:numerodecedula,
-            direccion:direccion,
-            telefono:telefono,
-            email:email,
-            comentario:comentario,
-            agregarproducto:agregarproducto,
-        }, 
-        success:function(data){
-            if(data = "LISTO"){                
-                document.getElementById("nombres").value = "";
-                document.getElementById("apellido").value = "";
-                document.getElementById("numerodecedula").value = "";
-                document.getElementById("direccion").value = "";
-                document.getElementById("telefono").value = "";
-                document.getElementById("email").value = "";
-                document.getElementById("comentario").value = "";
-
-                Swal.fire(
-                    'EXITO',
-                    'DATOS GUARDADOS',
-                    'success'
-                  )  
-            }else{
-                Swal.fire({
-                    title: 'ERROR',
-                    text: "NO SE HA PODIDO GUARDAR LA INFORMACION",
-                    icon: 'warning',
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33'
-                });  
-            }
-        }    
-     });
-
-}
-
 function guadarDatosProductos(){
 
     var nombre = $.trim($("#nombre").val());    

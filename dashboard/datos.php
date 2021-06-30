@@ -42,18 +42,14 @@
             <div class="row">
            
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4">Nombres</label>
+                    <label for="inputEmail4">Nombres Y Apellidos</label>
                     <input type="text" class="form-control" id="nombres" placeholder="Juan Adalid" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputPassword4">Apellidos</label>
-                    <input type="text" class="form-control" id="apellido" placeholder="Mora Reyes" required>
-                </div>
-                </div>
-                <div class="form-group">
                     <label for="inputcedula">Numero de Cedula / RUC</label>
                     <input type="text" class="form-control" id="numerodecedula" placeholder="000000000000S">
                 </div>
+              </div>
                 <div class="form-group">
                     <label for="inputAddress2">Direccion</label>
                     <input type="text" class="form-control" id="direccion" placeholder="Managua, Bello Horizonte" required>
@@ -80,9 +76,7 @@
 
 </section>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="JS/agregarUsuarios.js"></script>
-  
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>  
 <?php
   include_once "./Views/parte_inferior.php"
 ?>
@@ -94,3 +88,58 @@
   margin-top: 0px;
 }
 </style>
+
+<script>
+function guadarDatos(){
+    var nombres = $.trim($("#nombres").val());    
+    var numerodecedula =$.trim($("#numerodecedula").val());    
+    var direccion =$.trim($("#direccion").val());    
+    var telefono =$.trim($("#telefono").val());    
+    var email =$.trim($("#email").val());  
+    var comentario =$.trim($("#comentario").val());
+    var agregarproducto = 1;
+
+    $.ajax({
+        url:"../dashboard/bd/agregarUsuarios.php",
+        type:"POST",
+        datatype: "json",
+        data: {
+            nombres:nombres, 
+            apellido: null,
+            numerodecedula:numerodecedula,
+            direccion:direccion,
+            telefono:telefono,
+            email:email,
+            comentario:comentario,
+            agregarproducto:agregarproducto,
+        }, 
+        success:function(data){
+            if(data = "LISTO"){                
+                document.getElementById("nombres").value = "";
+                document.getElementById("numerodecedula").value = "";
+                document.getElementById("direccion").value = "";
+                document.getElementById("telefono").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("comentario").value = "";
+
+                Swal.fire(
+                    'EXITO',
+                    'DATOS GUARDADOS',
+                    'success'
+                  )  
+            }else{
+                Swal.fire({
+                    title: 'ERROR',
+                    text: "NO SE HA PODIDO GUARDAR LA INFORMACION",
+                    icon: 'warning',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33'
+                });  
+            }
+        }    
+     });
+
+}
+
+</script>

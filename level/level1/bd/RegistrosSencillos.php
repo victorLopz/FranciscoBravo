@@ -68,7 +68,21 @@ switch($valorderegistros){
                 
                 $consulta = "INSERT INTO factura(AlmacenNumero, SubTotal, Total, montopagado, cambio, descuento, codigoRUCcedula, cliente, Timespace, fechaEmision, tipofac) VALUES('$NumeroAlmacen', '$SubTotal','$Total', '$Monto', '$cambio', '$descuento', '$ruc', '$nameuser', '$fechaTime', '$fecha', '$tipofac') ";			
                 $resultado = $conexion->prepare($consulta);
-                $resultado->execute();            
+                $resultado->execute();        
+                
+                if($tipofac == '2'){
+
+                        $consulta = "SELECT MAX(IDFactura) AS idfac FROM factura";			
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute();      
+                        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+                        $valordeid = $data[0]["idfac"];
+
+                        $consulta = "INSERT INTO abonoshis(montoAbonado, Concepto, idFactura) VALUES('0', '','$valordeid') ";			
+                        $resultado = $conexion->prepare($consulta);
+                        $resultado->execute(); 
+                }
 
                 break;
         case 3:

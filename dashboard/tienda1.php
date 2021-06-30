@@ -91,6 +91,8 @@
         </div>
 
         <a href="./stockañadidos.php?almacen=1"><button type="button" class="btn btn-outline-primary btn-lg"><i class="fa fa-bell"></i> Stock Añadidos</button></a>
+      </div>
+    </section>
      
 <?php
     include_once 'bd/conexion.php';
