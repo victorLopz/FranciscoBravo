@@ -46,7 +46,7 @@ $('#formLogin').submit(function (e) {
 
                             if ((JSON.parse(data)[0].IDRolControlUsuariosPK == 1)) {
                                 //Ventana de administrador
-                                window.location.href = "dashboard/index.php";
+                                window.location.href = "dashboard";
                             }
 
                             if ((JSON.parse(data)[0].IDRolControlUsuariosPK == 2)) {

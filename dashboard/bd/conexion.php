@@ -11,6 +11,7 @@ class Conexion{
             define('nombre_bd','residencial');
             define('usuario','root');
             define('password',''); 
+            
         }else{
             define('servidor','localhost');
             define('nombre_bd','u128272301_bravos');

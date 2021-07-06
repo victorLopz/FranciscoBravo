@@ -41,7 +41,7 @@ function Viewusuarios(){
       }, 
       success:function(data){
           let inv = JSON.parse(data)[0].suma;
-          $('#dineroencaja').html(inv);
+          $('#dineroencaja').html(parseFloat(inv).toLocaleString(undefined, {minimumFractionDigits: 2}));
       }
    });
 
@@ -67,13 +67,13 @@ function Viewusuarios(){
   }, 
   success:function(data){
       let venta = JSON.parse(data)[0].venta;
-      $('#ventatotal').html("C$: "+venta);
+      $('#ventatotal').html("C$: "+ parseFloat(venta).toLocaleString(undefined, {minimumFractionDigits: 2}));
 
       let compra = JSON.parse(data)[0].compra;
-      $('#compras').html("C$: "+compra);
+      $('#compras').html("C$: "+parseFloat(compra).toLocaleString(undefined, {minimumFractionDigits: 2}));
 
       let ganancias = JSON.parse(data)[0].ganancias;
-      $('#ganancias').html("C$: "+ganancias);
+      $('#ganancias').html("C$: "+ parseFloat(ganancias).toLocaleString(undefined, {minimumFractionDigits: 2}));
   }
 });
 
