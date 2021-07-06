@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    let url = "../dashboard/bd/consultas2.php?valordeConsulta=1";
+    let url = "../dashboard/bd/Consultas2.php?valordeConsulta=1";
 
     var  table = $('#tablaproductos').DataTable( {
         "ajax": url,
@@ -8,6 +8,7 @@ $(document).ready(function() {
                 { "data": "IDFactura" },
                 { "data": "fechaEmision" },
                 { "data": "cliente" },
+                { "data": "codigoRUCcedula" },
                 { "data": "total" },
                 { "data": "SumaAbonos" },
                 { "data": "resta" },
@@ -75,6 +76,8 @@ const enviarabono = () => {
     var concepto = $.trim($("#concepto").val());
     var metodopago = $.trim($("#metodopago").val());
     var idfactura = $.trim($("#idfac").val());
+    
+    console.log(idfactura);
 
     $.ajax({
         url: "../dashboard/bd/insercciones.php",
@@ -101,9 +104,6 @@ const enviarabono = () => {
                 document.getElementById("metodopago").value = "Efectivo";  
                 document.getElementById("idfac").value = ""; 
                 $('#abonos').modal('hide');
-
-                let urldeudas = "../dashboard/bd/consultas2.php?valordeConsulta=1";
-                tabladatos(urldeudas);
 
             }else{
                 Swal.fire({

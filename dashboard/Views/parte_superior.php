@@ -5,7 +5,7 @@
 <?php
 session_start();
 
-$validacion = "admin@admin.com";
+$validacion = "llantayrbravos@gmail.com";
 
 if($_SESSION["s_usuario"] === null){
     header("Location: ../index.php");

@@ -69,9 +69,8 @@
 <!-- AdminLTE App -->
 <script src="dashboard/Views/dist/js/adminlte.min.js"></script>
 
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="codigo.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </body>
 </html>

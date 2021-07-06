@@ -96,7 +96,7 @@ $("#formPersonas").submit(function(e){
                 
                 console.log(data);
                 
-                id = data[0].IDCodigoAlmacen;            
+                IDCodigoAlmacen = data[0].IDCodigoAlmacen;            
                 nombre = data[0].NombreArticulo;
                 Codigo1 = data[0].Codigo1;
                 Marca = data[0].Marca;
@@ -106,7 +106,7 @@ $("#formPersonas").submit(function(e){
                 precioVenta = data[0].precioVenta;
                 Stock = data[0].Stock;
     
-                tablaproductos.row(fila).data([id,Codigo1,nombre, Marca, Modelopresentacion, precioVenta, PrecioCompra, Notas, Stock]).draw();
+                tablaproductos.row(fila).data([IDCodigoAlmacen, Codigo1,nombre, Marca, Modelopresentacion, precioVenta, PrecioCompra, Notas, Stock]).draw();
                 $("#modaUpdate").modal("hide");
             }        
         });

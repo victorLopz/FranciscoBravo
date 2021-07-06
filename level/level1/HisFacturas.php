@@ -4,16 +4,18 @@
 <!-- EL MERO INDEX -->
 
 <?php
+
     include_once 'bd/conexion.php';
     $objeto = new Conexion();
     $conexion = $objeto->Conectar();
 
-    $consul = "SELECT IDFactura, cliente,fechaEmision, codigoRUCcedula ,Total, montopagado, cambio, tipofac FROM factura WHERE AlmacenNumero = 1 AND IsVisible = 1";
+    $consul = "SELECT factura.IDFactura, cata.Primer_Nombre_Empresa as cliente, factura.fechaEmision, cata.NumeroRUC_Cedula as codigoRUCcedula ,factura.Total, factura.montopagado, factura.cambio, factura.tipofac FROM factura INNER JOIN catalogodatos as cata ON cata.IDcatalogoDatos = factura.cliente WHERE factura.AlmacenNumero = 1 AND factura.IsVisible = 1";
 
     $consulta = $consul;
     $resultado = $conexion->prepare($consulta);
     $resultado->execute();
     $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
     <!-- Content Wrapper. Contains page content -->

@@ -46,9 +46,8 @@
         <img
                 src="../dashboard/img/logo.jpg"
                 alt="Logotipo">
-            <p class="centrado">LUBRICANTES Y LLANTAS<br>DOS HERMANOS #1<br>
-            Ofrecemos cambio de Aceite "Gratis"
-            <br>Direccion: Semaforos del Mayoreo 1c al Sur<br>Cel: 8464-7069 | 8824-5576
+            <p class="centrado">BRAVO´S<br>LLANTAS Y REPUESTOS<br>
+            LL Y R
             <br>RUC: 4081703600001C
             <br id='fechahora' name="fechahora">N° Factura: 000<?php echo $data[0]["IDFactura"];?>
             <br>Cliente: <?php echo $data[0]["cliente"];?>

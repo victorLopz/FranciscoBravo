@@ -38,7 +38,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas fa-globe"></i>  Dos Hermanos
+                    <i class="fas fa-globe"></i>  Bravo's
                     <small class="float-right" id ="date" name = "date">Fecha: 2/10/2014</small>
                   </h4>
                 </div>

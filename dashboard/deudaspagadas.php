@@ -64,7 +64,7 @@
 
 $(document).ready(function() {
 
-let url = "../dashboard/bd/consultas2.php?valordeConsulta=3";
+let url = "../dashboard/bd/Consultas2.php?valordeConsulta=3";
 
 var  table = $('#tablaproductos').DataTable( {
         "ajax": url,

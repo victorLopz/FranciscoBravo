@@ -21,7 +21,6 @@ function verrol(){
     
     correousuario = document.getElementById("Correo").innerHTML;
 
-    
     $.ajax({
         url: '../level1/bd/Consultas.php',
         type:"POST",
@@ -96,6 +95,26 @@ function spiner(){
         }
     });
 }
+
+( function () {
+
+    var $select = $('#cliente');
+    $.ajax({
+        url: '../level1/bd/Consultas.php',
+        type:"POST",
+        datatype: "json",
+        data: {
+            valordeConsulta: 16, 
+        }, 
+        success: function(data) {
+            $.each(JSON.parse(data), function(Nivel, name) {
+                let union = name.Primer_Nombre_Empresa + " / " + name.NumeroRUC_Cedula;
+                $select.append('<option value=' + name.IDcatalogoDatos + '>' + union + '</option>');
+            });
+        }
+    });
+
+})()
 
 function revisarstock(id){
     $.ajax({
@@ -325,6 +344,7 @@ $(document).on("click", ".btnEditar", function(){
 });
 
 function facturar(){
+
     $.ajax({
         url: '../level1/bd/Consultas.php',
         type:"POST",
@@ -351,10 +371,11 @@ function facturar1(x, y){
     tipofac = $('input:radio[name=gridRadios]:checked').val();
 
    var Monto = document.getElementById("monto").value;
-   var nameuser = document.getElementById("nameuser").value;
-   var ruc = document.getElementById("ruc").value;
+   var idcliente = document.getElementById("cliente").value;
 
-   if(totalglobal > Monto){ 
+   if(idcliente != 0){
+
+       if(totalglobal > Monto){ 
         Swal.fire({
             title: 'ERROR',
             text: "EL MONTO INGRESADO ES POCO",
@@ -363,7 +384,7 @@ function facturar1(x, y){
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33'
         }); 
-    }else{
+        }else{
         
         //Guardamos los Valores pues XD
         //Insertar la FACTURA
@@ -391,8 +412,7 @@ function facturar1(x, y){
                 SubTotal: sub,
                 descuento: x,
                 cambio: cambio,
-                nameuser: nameuser,
-                ruc: ruc,
+                nameuser: idcliente,
                 tipofac: tipofac
             }, 
             success: function(data) {
@@ -440,6 +460,18 @@ function facturar1(x, y){
                   })
             }
         });   
+    }
+
+    }
+    else{
+        Swal.fire({
+            title: 'ERROR',
+            text: "NO HA SELECCIONADO UN CLIENTE",
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33'
+        }); 
     }
 }
 

@@ -685,8 +685,8 @@ ALTER TABLE `descuento`
 --
 -- AUTO_INCREMENT de la tabla `detalledefactura`
 --
-ALTER TABLE `detalledefactura`
-  MODIFY `IDFacturaDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  ALTER TABLE `detalledefactura`
+    MODIFY `IDFacturaDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `detallesinventario`

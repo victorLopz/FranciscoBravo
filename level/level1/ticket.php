@@ -29,12 +29,13 @@
                             al.precioVenta,
                             al.Modelopresentacion,
                             fac.descuento,
-                            fac.cliente,
-                            fac.codigoRUCcedula
+                            cata.Primer_Nombre_Empresa as cliente,
+                            cata.NumeroRUC_Cedula as codigoRUCcedula
                         FROM factura as fac 
                         INNER JOIN detalledefactura as det ON det.IDFacturaPK = fac.IDFactura
                         INNER JOIN almacenuno as uno ON uno.IDAlmacenuno = det.producto
                         INNER JOIN almacen as al ON al.IDCodigoAlmacen = uno.IDCodigoAlmacenPK
+                        INNER JOIN catalogodatos as cata ON cata.IDcatalogoDatos = fac.cliente
                         WHERE fac.IDFactura = '$varid'";
 
         $consulta = $consult;			
@@ -53,7 +54,6 @@
                 alt="Logotipo">
             <p class="centrado">BRAVO´S<br>LLANTAS Y REPUESTOS<br>
             LL Y R
-            <!--<br>Direccion: Semaforos del Mayoreo 1c al Sur<br>Cel: 8464-7069 | 8824-5576-->
             <br>RUC: 4081703600001C
             <br id='fechahora' name="fechahora">N° Factura: 000<?php echo $data[0]["IDFactura"];?>
             <br>Cliente: <?php echo $data[0]["cliente"];?>

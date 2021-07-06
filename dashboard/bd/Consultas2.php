@@ -8,46 +8,8 @@ $valordeConsulta = (isset($_GET['valordeConsulta'])) ? $_GET['valordeConsulta'] 
 
 switch($valordeConsulta){
     case 1:
-            //$consulta = "SELECT * FROM `vistadeudas`";    
-            $consulta = "SELECT
-            fac.IDFactura AS IDFactura,
-            fac.fechaEmision AS fechaEmision,
-            fac.cliente AS cliente,
-            fac.codigoRUCcedula AS codigoRUCcedula,
-            fac.Total AS total,
-            (
-            SELECT
-                SUM(
-                    residencial.abonoshis.montoAbonado
-                )
-            FROM
-                residencial.abonoshis
-            WHERE
-                residencial.abonoshis.idFactura = fac.IDFactura
-        ) AS SumaAbonos,
-        fac.Total -(
-            SELECT
-                SUM(
-                    residencial.abonoshis.montoAbonado
-                )
-            FROM
-                residencial.abonoshis
-            WHERE
-                residencial.abonoshis.idFactura = fac.IDFactura
-        ) AS resta
-        FROM
-            residencial.factura fac
-        WHERE
-            fac.tipofac = 2 AND fac.Total -(
-            SELECT
-                SUM(
-                    residencial.abonoshis.montoAbonado
-                )
-            FROM
-                residencial.abonoshis
-            WHERE
-                residencial.abonoshis.idFactura = fac.IDFactura
-        ) > 0";   
+
+            $consulta = "SELECT * FROM vistadeudas";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             
@@ -68,7 +30,7 @@ switch($valordeConsulta){
         break;
 
     case 3:
-            $consulta = "select fac.IDFactura AS IDFactura,fac.fechaEmision AS fechaEmision,fac.cliente AS cliente,fac.codigoRUCcedula AS codigoRUCcedula,fac.Total AS total,(select sum(residencial.abonoshis.montoAbonado) from residencial.abonoshis where residencial.abonoshis.idFactura = fac.IDFactura) AS SumaAbonos,fac.Total - (select sum(residencial.abonoshis.montoAbonado) from residencial.abonoshis where residencial.abonoshis.idFactura = fac.IDFactura) AS resta from residencial.factura fac where fac.tipofac = 2 and fac.Total - (select sum(residencial.abonoshis.montoAbonado) from residencial.abonoshis where residencial.abonoshis.idFactura = fac.IDFactura) = 0";    
+            $consulta = "SELECT * FROM vistasaldadas";  
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             

@@ -27,7 +27,8 @@
     </section>
 
 <?php
-    $consul = "SELECT IDFactura, cliente, codigoRUCcedula, fechaEmision, Timespace, Total, montopagado, cambio FROM factura WHERE AlmacenNumero = 1 AND IsVisible = 1";
+    //$consul = "SELECT IDFactura, cliente, codigoRUCcedula, fechaEmision, Timespace, Total, montopagado, cambio FROM factura WHERE AlmacenNumero = 1 AND IsVisible = 1";
+    $consul = "SELECT factura.IDFactura, cata.Primer_Nombre_Empresa as cliente, factura.fechaEmision, factura.Timespace, cata.NumeroRUC_Cedula as codigoRUCcedula ,factura.Total, factura.montopagado, factura.cambio, factura.tipofac FROM factura INNER JOIN catalogodatos as cata ON cata.IDcatalogoDatos = factura.cliente WHERE factura.AlmacenNumero = 1 AND factura.IsVisible = 1";
 
     $consulta = $consul;
     $resultado = $conexion->prepare($consulta);
@@ -108,21 +109,13 @@
 <script src="JS/tiendas.js"></script>
 
 <style>
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
 .card-header {
   background: #9ca2aa;
 }
 
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
 .btn-warning {
   margin-top: 32px;
 }
-
-/* En línea #11 | http://localhost/administracion/Virtual_Innova/level/level1/HisFacturas.php */
 
 @media (min-width: 576px) {
   .modal-sm {
@@ -131,16 +124,11 @@
   }
 }
 
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
 .callout {
-  /* border-left-width: 19px; */
   border-left-width: 0px;
   margin-left: 17px;
   margin-right: 15px;
 }
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/devoluciones.php */
 
 .btn-warning {
   margin-left: 163px;

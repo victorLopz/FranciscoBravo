@@ -63,10 +63,9 @@ switch($valorderegistros){
                 $cambio = (isset($_POST['cambio'])) ? $_POST['cambio'] : '';
                 $descuento = (isset($_POST['descuento'])) ? $_POST['descuento'] : '';
                 $nameuser = (isset($_POST['nameuser'])) ? $_POST['nameuser'] : '';
-                $ruc = (isset($_POST['ruc'])) ? $_POST['ruc'] : '';
                 $tipofac = (isset($_POST['tipofac'])) ? $_POST['tipofac'] : '';
                 
-                $consulta = "INSERT INTO factura(AlmacenNumero, SubTotal, Total, montopagado, cambio, descuento, codigoRUCcedula, cliente, Timespace, fechaEmision, tipofac) VALUES('$NumeroAlmacen', '$SubTotal','$Total', '$Monto', '$cambio', '$descuento', '$ruc', '$nameuser', '$fechaTime', '$fecha', '$tipofac') ";			
+                $consulta = "INSERT INTO factura(AlmacenNumero, SubTotal, Total, montopagado, cambio, descuento, cliente, Timespace, fechaEmision, tipofac) VALUES('$NumeroAlmacen', '$SubTotal','$Total', '$Monto', '$cambio', '$descuento', '$nameuser', '$fechaTime', '$fecha', '$tipofac') ";			
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute();        
                 

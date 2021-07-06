@@ -1,10 +1,12 @@
 <?php
- class Conexion{
+class Conexion{
      public static function Conectar(){
 
-        $valor = true;
+        $Servidor = gethostname();
+        $mipc = 'DESKTOP-2G8GBL1';
+ 
+        if(strcmp($Servidor, $mipc ) === 0){ 
 
-        if($valor){
             define('servidor','localhost');
             define('nombre_bd','residencial');
             define('usuario','root');
@@ -17,8 +19,9 @@
         }       
          
         $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
+        
          
-         try{
+        try{
 
             $conexion = new PDO("mysql:host=".servidor.";dbname=".nombre_bd, usuario, password, $opciones);
             return $conexion; 

@@ -35,7 +35,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas fa-globe"></i>  Dos Hermanos
+                    <i class="fas fa-globe"></i>  Bravos
                     <small class="float-right" id ="date" name = "date">Fecha: 2/10/2014</small>
                   </h4>
                 </div>
@@ -87,7 +87,25 @@
                 <!-- /.col -->
               </div>
               <!-- /.row -->
-<!-- Datos de la factura -->
+
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-row">
+
+                    <div class="form-group col-md-12">
+                        <label>Clientes existentes</label>
+                        <select class="form-control select2" id = "cliente" style="width: 100%;">
+                          <option selected="selected" value = "0">-- Seleccione --</option>
+                        </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+
+
+<!-- Datos de la factura 
               <div class="card">
                 <div class="card-body">
                   <div class="form-row">
@@ -102,7 +120,7 @@
                   </div>
                 </div>
               </div>
-<!-- Fin Datos de la factura -->
+Fin Datos de la factura -->
               <div class="card">
                 <div class="card-header">
                   Añadir Producto
@@ -252,7 +270,8 @@
     <!-- /.content -->
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="JS/Facturar.js"></script>
+  <script src="JS/Facturar.js"></script>
+  
   
 <?php
   include_once "./Views/parte_inferior.php"

@@ -11,13 +11,13 @@ $inicio = $_GET["inicio"];
 $final = $_GET["final"];
 $tienda = $_GET["tienda"];
 
-$consul = "SELECT DISTINCT(deta.Unidades) as Unidades, 
-                al.NombreArticulo 
+$consul = "SELECT DISTINCT(deta.producto) as produc, 
+                al.NombreArticulo, (Select SUM(deta.Unidades) From detalledefactura as deta WHERE producto = produc) as Cant
                     FROM factura as fac 
                     INNER JOIN detalledefactura as deta ON deta.IDFacturaPK = fac.IDFactura 
                     INNER JOIN almacen as al ON al.IDCodigoAlmacen = deta.producto 
                 WHERE fac.Timespace 
-                BETWEEN '$inicio' AND '$final' ORDER BY deta.Unidades DESC LIMIT 10";
+                BETWEEN '$inicio' AND '$final' ORDER BY Cant DESC LIMIT 10";
                 
 $consulta = $consul;
 $resultado = $conexion->prepare($consulta);
@@ -65,7 +65,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
               <tr>
                   <td><?php echo $i++; ?></td>
                   <td><?php echo $dat['NombreArticulo']; ?></td>
-                  <td><?php echo $dat['Unidades']; ?></td>
+                  <td><?php echo $dat['Cant']; ?></td>
               </tr>                        
               <?php } ?>
           </tbody>

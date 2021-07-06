@@ -19,7 +19,7 @@ switch($valordeConsulta){
         break;
 
     case 2:
-            $consulta = "SELECT (sum(aluno.Stock) + sum(aldos.Stock) + sum(altres.Stock) + sum(alcuatro.Stock)) as keslerpendejo from almacen AS al INNER JOIN almacenuno as aluno ON aluno.IDAlmacenuno = al.IDCodigoAlmacen INNER JOIN almacendos as aldos ON aldos.IDAlmacendos = al.IDCodigoAlmacen INNER JOIN almacentres as altres ON altres.IDAlmacentres = al.IDCodigoAlmacen INNER JOIN almacencuatro as alcuatro ON alcuatro.IDAlmacencuatro = al.IDCodigoAlmacen WHERE al.IsVisible = 1";       
+            $consulta = "SELECT sum(aluno.Stock) as keslerpendejo from almacen AS al INNER JOIN almacenuno as aluno ON aluno.IDAlmacenuno = al.IDCodigoAlmacen WHERE al.IsVisible = 1";       
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             $data2=$resultado->fetchAll(PDO::FETCH_ASSOC);

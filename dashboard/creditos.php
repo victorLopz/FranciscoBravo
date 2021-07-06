@@ -36,6 +36,7 @@
                       <th>id</th>
                       <th>Fecha</th>
                       <th>Contacto</th>
+                      <th>RUC</th>
                       <th>Total</th>
                       <th>Abonado</th>
                       <th>Restante</th>

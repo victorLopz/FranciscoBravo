@@ -35,6 +35,7 @@
                                         <th>N° Telefono</th>
                                         <th>Email</th>
                                         <th>Comentario</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,11 +106,11 @@
 
 <script>    
 
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        let url = "../dashboard/bd/consultas2.php?valordeConsulta=4";
+    let url = "../dashboard/bd/Consultas2.php?valordeConsulta=4";
 
-      tablaproductos = $("#tablaproductos").DataTable({
+    tablaproductos = $("#tablaproductos").DataTable({
         "ajax": url,
         "columns": [
                 { "data": "IDcatalogoDatos" },
@@ -119,11 +120,12 @@
                 { "data": "Numero_Telefonico" },
                 { "data": "Email" },
                 { "data": "Comentario" },
+                { "data": null }
         ],
           "columnDefs": [{
               "targets": -1,
               "data": null,              
-              "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar' data-toggle='modal' data-target='.bd-example-modal-lg'>Editar</button>&nbsp;&nbsp;&nbsp;<button class='btn btn-danger btnEliminar'>Eliminar</button></div>"
+              "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-success btnhis'>Historial</button></div>"
           }],
           "language": {
               "lengthMenu": "Mostrar _MENU_ registros",
@@ -140,8 +142,17 @@
               },
               "sProcessing": "Procesando...",
           }
-      });
     });
+
+      
+    $('#tablaproductos tbody').on( 'click', '.btnhis', function () {
+        var data = tablaproductos.row( $(this).parents('tr') ).data();
+        id = data.IDcatalogoDatos;
+        window.location.href = "hisfacclien.php?id="+id;
+    });   
+
+});
+
 </script>
 
 <?php
@@ -151,34 +162,12 @@
 
 <style>
 
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
 .card-header {
   background: #9ca2aa;
 }
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
-.btn-warning {
-  margin-top: 32px;
-}
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/Facturas.php */
-
-.btn-success {
-  margin-right: 137px;
-}
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/almacenes.php */
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/verProductosCRUD.php */
-
 .card {
   margin-left: -1px;
   margin-right: 0px;
 }
-
 
 </style>
