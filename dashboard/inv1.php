@@ -138,11 +138,6 @@ $(document).ready(function() {
 }
 
 
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/almacenes.php */
-
-
-/* Elemento | http://localhost/administracion/Virtual_Innova/dashboard/verProductosCRUD.php */
-
 .card {
   margin-left: -1px;
   margin-right: 0px;
